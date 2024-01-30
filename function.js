@@ -10,11 +10,14 @@ const handleClick = async () => {
     try {
         const response = await fetch(url + randomId)
         const data = await response.json()
-        spellName.fadeIn("slow", () => {
+        spellName.fadeOut('slow', () => {
             spellName.text(data.spell)
+            spellName.fadeIn('slow')
+           
         })
-        spellUse.fadeIn("slow", () => {
-            spellUse.text(`"${data.use}"`)
+        spellUse.fadeOut('slow', () => {
+            spellUse.text(data.use)
+            spellUse.fadeIn('slow')
         })
     } catch (error) {
         console.log(error);
@@ -27,17 +30,4 @@ button.click(() => {
     handleClick()
 })
 
-// button.click(() => {
-//     button.text("New Spell")
-//     randomId = Math.floor(Math.random() * 72) + 1;
-//     fetch(url + randomId)
-//         .then((response) => response.json())
-//         .then((data) => {
-//             spellName.fadeIn("slow", () => {
-//                 spellName.text(data.spell)
-//             })
-//             spellUse.fadeIn("slow", () => {
-//                 spellUse.text(`"${data.use}"`)
-//             })
-//         })
-// })
+
